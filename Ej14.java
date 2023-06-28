@@ -1,6 +1,13 @@
+import Ej14.Entities.Movil;
+import Ej14.Services.MovilService;
+
 public class Ej14 {
     public static void main(String[] args) {
-        
+        MovilService ms = new MovilService();
+        Movil cel = ms.cargarCelular();
+        System.out.println("\n---------------------------------------------------------");
+        System.out.println("La información del celular recién cargado es la siguiente: ");
+        System.out.println(cel);
     }
 }
 /*Una tienda que vende teléfonos móviles quiere tener registro de cada producto que posee en un sistema computacional.
