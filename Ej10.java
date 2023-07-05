@@ -10,7 +10,6 @@ public class Ej10 {
         System.out.println("El arreglo 1 se generó con los siguientes valores: ");
         System.out.println(Arrays.toString(arr1));
         Arrays.sort(arr1);
-
         arr2 = Arrays.copyOfRange(arr1, 0, 19);
         Arrays.fill(arr2,10,19,0.5);
         System.out.println("El arreglo 1 quedó ordenado de la siguiente manera: ");

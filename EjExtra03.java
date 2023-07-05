@@ -1,14 +1,13 @@
-import EjerciciosExtra.Extra03.Entities.Raices;
-import EjerciciosExtra.Extra03.Services.RaicesService;
+import ExtrasPOO.Extra03.Services.RaicesService;
 
 public class EjExtra03 {
     public static void main(String[] args) {
         RaicesService rs = new RaicesService();
-        Raices raices = rs.crearRaices();
+        rs.crearRaices();
 
-        System.out.println(raices);
+        System.out.println(rs.getRaices());
         System.out.println("Sus raíces son: ");
-        rs.calcular(raices);
+        rs.calcular();
     }
 }
 /*Vamos a realizar una clase llamada Raices, donde representaremos los valores de una ecuación de 2o grado.

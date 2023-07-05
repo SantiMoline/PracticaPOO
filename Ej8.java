@@ -1,7 +1,6 @@
 import java.util.Scanner;
 
-import Ej8.Entities.Cadena;
-import Ej8.Services.CadenaService;
+import EjerciciosPOO.Ej8.Services.CadenaService;
 
 public class Ej8 {
     public static void main(String[] args) {
@@ -9,8 +8,7 @@ public class Ej8 {
         CadenaService cs = new CadenaService();
 
         System.out.println("Ingrese una frase: ");
-        String input = scan.nextLine();
-        Cadena cad = cs.crearCadena(input);
+        cs.crearCadena(scan.nextLine());
 
         boolean active = true;
         while (active) {
@@ -20,29 +18,29 @@ public class Ej8 {
             scan.nextLine(); //captures the rest of the line after de int.
             switch (opc) {
                 case 1:
-                    System.out.println("La cantidad de vocales contenidas en la frase es: " + cs.contarVocales(cad));
+                    System.out.println("La cantidad de vocales contenidas en la frase es: " + cs.contarVocales());
                     break;
                 case 2:
-                    System.out.println("La frase invertida es: " + cs.invertirFrase(cad));
+                    System.out.println("La frase invertida es: " + cs.invertirFrase());
                     break;
                 case 3:
                     System.out.println("Ingrese el caracter que desea validar si está contenido en la frase: ");
                     String caracter = scan.nextLine();
-                    if(cs.contiene(cad, caracter)) {
-                        System.out.println("El caracter '" +caracter+ "' se encuentra contenido en la frase: " + cad.getFrase());
+                    if(cs.contiene(caracter)) {
+                        System.out.println("El caracter '" +caracter+ "' se encuentra contenido en la frase: " + cs.getFrase());
                     } else {
-                        System.out.println("El caracter '" +caracter+ "' NO se encuentra contenido en la frase: " + cad.getFrase());
+                        System.out.println("El caracter '" +caracter+ "' NO se encuentra contenido en la frase: " + cs.getFrase());
                     }
                     break;
                 case 4:
                     System.out.println("Ingrese el carácter que desea saber cuántas veces se repite: ");
                     caracter = scan.nextLine();
-                    System.out.println("El caracter '" + caracter + "'' se repite " + cs.vecesRepetido(cad, caracter) + " veces.");
+                    System.out.println("El caracter '" + caracter + "'' se repite " + cs.vecesRepetido(caracter) + " veces.");
                     break;
                 case 5:
                     System.out.println("Ingrese una nueva frase para comparar su longitud con la original.");
                     String nuevaFrase = scan.nextLine();
-                    if (cs.compararLongitud(cad, nuevaFrase)) {
+                    if (cs.compararLongitud(nuevaFrase)) {
                         System.out.println("Las frases tienen la misma longitud!!");
                     } else {
                         System.out.println("Las frases NO tienen la misma longitud.");
@@ -51,12 +49,12 @@ public class Ej8 {
                 case 6: 
                     System.out.println("Ingrese una frase para unir a la original: ");
                     nuevaFrase = scan.nextLine();
-                    System.out.println("Las frases unidas son las siguientes:\n" + cs.unirFrases(cad, nuevaFrase));
+                    System.out.println("Las frases unidas son las siguientes:\n" + cs.unirFrases(nuevaFrase));
                     break;
                 case 7:
                     System.out.println("Ingrese la letra por la cual quiere reemplazar cada 'a' de la frase original.");
                     caracter = scan.nextLine();
-                    System.out.println("La frase con las 'a' reemplazadas queda de la siguiente forma:\n" + cs.reemplazar(cad, caracter));
+                    System.out.println("La frase con las 'a' reemplazadas queda de la siguiente forma:\n" + cs.reemplazar(caracter));
                     break;
                 case 8: active = false; break;
                 default: 

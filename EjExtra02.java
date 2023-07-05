@@ -1,15 +1,14 @@
-import EjerciciosExtra.Extra02.Entities.Puntos;
-import EjerciciosExtra.Extra02.Services.PuntosService;
+import ExtrasPOO.Extra02.Services.PuntosService;
 
 public class EjExtra02 {
     public static void main(String[] args) {
         PuntosService ps = new PuntosService();
         
         System.out.println("-----Bienvenidos a la calculadora de distancia entre puntos-----");
-        Puntos puntos = ps.crearPuntos();
-        System.out.println("Los puntos ingresados tienen las siguientes coordenadas: ");
-        System.out.println(puntos);
-        System.out.println("La distancia entre ellos es de: " + ps.calcularDistancia(puntos));
+        ps.crearPuntos();
+        System.out.println("\nLos puntos ingresados tienen las siguientes coordenadas: ");
+        System.out.println(ps.getPuntos());
+        System.out.println("La distancia entre ellos es de: " + ps.calcularDistancia());
     }
 }
 /*Definir una clase llamada Puntos que contendrá las coordenadas de dos puntos, sus atributos serán, x1, y1, x2, y2,

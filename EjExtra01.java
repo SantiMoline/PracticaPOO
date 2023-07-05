@@ -1,13 +1,12 @@
-import EjerciciosExtra.Extra01.Entities.Cancion;
-import EjerciciosExtra.Extra01.Services.CancionService;
+import ExtrasPOO.Extra01.Services.CancionService;
 
 public class EjExtra01 {
     public static void main(String[] args) {
         CancionService cs = new CancionService();
-        Cancion song = cs.crearCancion();
+        cs.crearCancion();
 
         System.out.println("Los datos de la canción registrada son: ");
-        System.out.println(song);
+        System.out.println(cs.getCancion());
     }
 }
 /*Desarrollar una clase Cancion con los siguientes atributos: titulo y autor.

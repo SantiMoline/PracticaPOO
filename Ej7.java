@@ -1,18 +1,16 @@
-
-import Ej7.Entities.Persona;
-import Ej7.Services.PersonaService;
+import EjerciciosPOO.Ej7.Services.PersonaService;
 
 public class Ej7 {
     public static void main(String[] args) {
-        PersonaService ps = new PersonaService();
-        Persona[] personas = new Persona[4];
+        PersonaService[] personas = new PersonaService[4];
         int cantSobrepeso = 0, cantBajoPeso = 0, cantPesoOk = 0, cantMayoresEdad = 0;
 
         for (int i = 0; i < personas.length; i++) {
             System.out.println("\nGuardando la información de la persona Nº " + (i+1));
-            personas[i] = ps.crearPersona();
+            personas[i] = new PersonaService();
+            personas[i].crearPersona();
             
-            switch (ps.calularIMC(personas[i])) {
+            switch (personas[i].calcularIMC()) {
                 case -1:
                     System.out.println("\nLa persona está debajo de su peso ideal.");
                     cantBajoPeso++;
@@ -28,7 +26,7 @@ public class Ej7 {
                 default: System.out.println("Error calculating IMC."); break;
             }
 
-            if (ps.esMayorDeEdad(personas[i])) {
+            if (personas[i].esMayorDeEdad()) {
                 cantMayoresEdad++;
             }
         }

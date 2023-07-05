@@ -1,15 +1,14 @@
-import Ej4.Entities.Rectangulo;
-import Ej4.Services.RectanguloService;
+import EjerciciosPOO.Ej4.Services.RectanguloService;
 
 public class Ej4 {
     public static void main(String[] args) {
         RectanguloService rs = new RectanguloService();
-        Rectangulo rect = rs.crearRectangulo();
+        rs.crearRectangulo();
 
-        System.out.println("El perímetro del rectángulo generado es: " + rs.calcularPerimetro(rect));
-        System.out.println("El área del rectángulo generado es: " + rs.calcularArea(rect));
+        System.out.println("El perímetro del rectángulo generado es: " + rs.calcularPerimetro());
+        System.out.println("El área del rectángulo generado es: " + rs.calcularArea());
         System.out.println("El rectángulo generado se ve de la siguiente manera: ");
-        rs.dibujarRectangulo(rect);
+        rs.dibujarRectangulo();
     }
 }
 

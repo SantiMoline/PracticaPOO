@@ -1,16 +1,15 @@
-import Ej9.Entities.Matematica;
-import Ej9.Services.MatematicaService;
+import EjerciciosPOO.Ej9.Services.MatematicaService;
 
 public class Ej9 {
     public static void main(String[] args) {
         MatematicaService ms = new MatematicaService();
         //Se instancia el objeto pasando dos números random 0-9.
-        Matematica math1 = ms.crearMatematica(Math.random()*10, Math.random()*10);
+        ms.crearMatematica(Math.random()*10, Math.random()*10);
 
-        System.out.println("El mayor número guardado en el objeto es: " + ms.devolverMayor(math1));
-        System.out.println("El menor número guardado en el objeto es: " + ms.devolverMenor(math1));
-        System.out.println("El resultado de "+ ms.devolverMayor(math1) + " elevado a " + ms.devolverMenor(math1) +" es: " + ms.calcularPotencia(math1));
-        System.out.println("La raíz cuadrada de " + ms.devolverMenor(math1) + " es: " + ms.calcularRaiz(math1));
+        System.out.println("El mayor número guardado en el objeto es: " + ms.devolverMayor());
+        System.out.println("El menor número guardado en el objeto es: " + ms.devolverMenor());
+        System.out.println("El resultado de "+ ms.devolverMayor() + " elevado a " + ms.devolverMenor() +" es: " + ms.calcularPotencia());
+        System.out.println("La raíz cuadrada de " + ms.devolverMenor() + " es: " + ms.calcularRaiz());
     }
 }
 /*Realizar una clase llamada Matemática que tenga como atributos dos números reales con los cuales se realizarán

@@ -1,15 +1,14 @@
-import Ej3.Entities.Operacion;
-import Ej3.Services.OperacionService;
+import EjerciciosPOO.Ej3.Services.OperacionService;
 
 public class Ej3 {
     public static void main(String[] args) {
         OperacionService os = new OperacionService();
-        Operacion op = os.crearOperacion();
+        os.crearOperacion();
 
-        System.out.println("El resultado de la suma de los números ingresados es: " + os.sumar(op));
-        System.out.println("El resultado de la resta de los números ingresados es: " + os.restar(op));
-        System.out.println("El producto de la multiplicación de los números ingresados es: " + os.multiplicar(op));
-        System.out.println("El resultado de la división de los números ingresados es: " + os.dividir(op));       
+        System.out.println("El resultado de la suma de los números ingresados es: " + os.sumar());
+        System.out.println("El resultado de la resta de los números ingresados es: " + os.restar());
+        System.out.println("El producto de la multiplicación de los números ingresados es: " + os.multiplicar());
+        System.out.println("El resultado de la división de los números ingresados es: " + os.dividir());       
     }
 }
 

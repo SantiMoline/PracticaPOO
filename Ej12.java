@@ -1,27 +1,26 @@
 import java.util.Scanner;
 
-import Ej12.Entities.Persona;
-import Ej12.Services.PersonaService;
+import EjerciciosPOO.Ej12.Services.PersonaService;
 
 public class Ej12 {
     public static void main(String[] args) {
         System.out.println("-----Bienvenido al Registro de las Personas-----");
         PersonaService ps = new PersonaService();
-        Persona p1 = ps.crearPersona();
+        ps.crearPersona();
 
         System.out.println("Los datos de la persona ingresada son los siguientes: ");
-        ps.mostrarPersona(p1);
+        ps.mostrarPersona();
         System.out.println("Ingrese una edad ");
         Scanner scan = new Scanner(System.in);
         int edad = scan.nextInt();
 
-        if (ps.menorQue(p1, edad)) {
+        if (ps.menorQue(edad)) {
             System.out.println("La persona es MENOR que la edad indicada");
         } else {
             System.out.println("La persona es MAYOR que la edad indicada.");
         }
 
-        System.out.println("La persona detallada tiene " + ps.calcularEdad(p1) + " años de edad.");        
+        System.out.println("La persona detallada tiene " + ps.calcularEdad() + " años de edad.");        
         scan.close();
     }
 }

@@ -1,46 +1,36 @@
-
-
 import java.util.Scanner;
 
-import Ej6.Entities.Cafetera;
-import Ej6.Services.CafeteraService;
+import EjerciciosPOO.Ej6.Services.CafeteraService;
 
 public class Ej6 {
     public static void main(String[] args) {
         CafeteraService cs = new CafeteraService();
-        Cafetera cafetera = cs.crearCafetera();
+        cs.crearCafetera();
         boolean activo = true;
         int opc;
         Scanner scan = new Scanner(System.in);
 
          while (activo) {
-            System.out.println("Bienvenido a Coffe Machine App: ");
-            System.out.println("--------Menú Principal--------");
-            System.out.println("1. Llenar cafetera.");
-            System.out.println("2. Servir taza de café.");
-            System.out.println("3. Vaciar cafetera.");
-            System.out.println("4. Agregar café.");
-            System.out.println("5. Salir.");
-            
+            imprimirMenu();
             opc = scan.nextInt();
 
             switch (opc) {
                 case 1:
                     System.out.println("Cafetera llenada con éxito.");
-                    cs.llenarCafetera(cafetera);
-                    System.out.println("La cafetera ahora tiene " + cafetera.getCantidadActual() + " ml de café.");
+                    cs.llenarCafetera();
+                    System.out.println("La cafetera ahora tiene " + cs.getCantidadActual() + " ml de café.");
                     break;
                 case 2:
                     System.out.println("Indique la capacidad en ml de la taza a servir.");
-                    cs.servirTaza(cafetera, scan.nextDouble());
+                    cs.servirTaza(scan.nextDouble());
                     break;
                 case 3:
-                    cs.vaciarCafetera(cafetera);
+                    cs.vaciarCafetera();
                     System.out.println("Cafetera vaciada con éxito.");
                     break;
                 case 4:
                     System.out.println("Indique la cantidad de café a agregar: ");
-                    cs.agregarCafe(cafetera, scan.nextDouble());
+                    cs.agregarCafe(scan.nextDouble());
                     break;
                 case 5:
                     System.out.println("A seguir trabajando. Nos vemos luego!");
@@ -50,10 +40,18 @@ public class Ej6 {
                     System.out.println("Opción incorrecta. Intente nuevamente.");
                     break;
             }
-            
         }
-
         scan.close();
+    }
+
+    public static void imprimirMenu() {
+        System.out.println("Bienvenido a Coffe Machine App: ");
+        System.out.println("--------Menú Principal--------");
+        System.out.println("1. Llenar cafetera.");
+        System.out.println("2. Servir taza de café.");
+        System.out.println("3. Vaciar cafetera.");
+        System.out.println("4. Agregar café.");
+        System.out.println("5. Salir.");
     }
 }
 /*Programa Nespresso. Desarrolle una clase Cafetera con los atributos capacidadMaxima

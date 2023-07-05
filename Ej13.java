@@ -1,16 +1,15 @@
-import Ej13.Entities.Curso;
-import Ej13.Services.CursoService;
+import EjerciciosPOO.Ej13.Services.CursoService;
 
 public class Ej13 {
     public static void main(String[] args) {
         
         CursoService cs = new CursoService();
         System.out.println("------------Bienvenido a CursAPP------------");
-        Curso curse = cs.crearCurso();
-        System.out.println("La ganancia semanal del curso generado será de: " + cs.calcularGananciaSemanal(curse));
+        cs.crearCurso();
+        System.out.println("La ganancia semanal del curso generado será de: " + cs.calcularGananciaSemanal());
 
         System.out.println("Detalles del curso: ");
-        System.out.println(curse);
+        System.out.println(cs.getCurso());
     }
 }
 /*Un profesor particular está dando cursos para grupos de cinco alumnos y necesita un programa para organizar la información de cada curso.

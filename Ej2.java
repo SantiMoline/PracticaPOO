@@ -1,14 +1,12 @@
-import Ej2.Entities.Circunferencia;
-import Ej2.Services.CircunferenciaService;
+import EjerciciosPOO.Ej2.Services.CircunferenciaService;
 
 public class Ej2 {
     public static void main(String[] args) {
         CircunferenciaService cs = new CircunferenciaService();
-        Circunferencia circulo = cs.crearCircunferencia();
+        cs.crearCircunferencia();
 
-        System.out.println("El perímetro de la circunferencia generada es: " + cs.calcularPerimetro(circulo));
-        System.out.println("El área de la circunferencia generada es: " + cs.calcularArea(circulo));
-
+        System.out.println("El perímetro de la circunferencia generada es: " + cs.calcularPerimetro());
+        System.out.println("El área de la circunferencia generada es: " + cs.calcularArea());
     }
 }
 
