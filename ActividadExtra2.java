@@ -22,11 +22,11 @@ public class ActividadExtra2 {
         while (activo) {
             mostrarMenu();
             int opcion = scan.nextInt();
-            scan.nextLine(); //Throwaway scan.
+            scan.nextLine(); // Throwaway scan.
             while (opcion < 1 || opcion > 7) {
                 System.out.println("Opción incorrecta, elija una opción entre 1 y 7");
                 opcion = scan.nextInt();
-                scan.nextLine(); //Throwaway scan.
+                scan.nextLine(); // Throwaway scan.
             }
             switch (opcion) {
                 case 1: {
@@ -35,7 +35,7 @@ public class ActividadExtra2 {
                     contPeliculas++;
                     break;
                 }
-                case 2: 
+                case 2:
                     System.out.println("\nLas palículas disponibles son: ");
                     imprimirArrayDisponibles(peliculasDisponibles);
                     break;
@@ -53,13 +53,19 @@ public class ActividadExtra2 {
                     contAlquileres++;
                     break;
                 }
-                case 4: imprimirArrayAlquiladas(peliculasAlquiladas); break;
-                case 5: buscarPelicula(peliculasDisponibles); break;
-                case 6: buscarAlquiler(peliculasAlquiladas); break;
-                case 7: activo = false;
+                case 4:
+                    imprimirArrayAlquiladas(peliculasAlquiladas);
+                    break;
+                case 5:
+                    buscarPelicula(peliculasDisponibles);
+                    break;
+                case 6:
+                    buscarAlquiler(peliculasAlquiladas);
+                    break;
+                case 7:
+                    activo = false;
             }
         }
-
     }
 
     public static void mostrarMenu() {
@@ -76,8 +82,8 @@ public class ActividadExtra2 {
     public static void imprimirArrayDisponibles(ServicioPelicula[] disponibles) {
         boolean encontrada = false;
         for (int i = 0; i < disponibles.length; i++) {
-            if (disponibles[i] != null) {       //Para evitar error al querer manipular un elemento en null.
-                System.out.println((i+1) + ": " + disponibles[i].listarPelicula());
+            if (disponibles[i] != null) { // Para evitar error al querer manipular un elemento en null.
+                System.out.println((i + 1) + ": " + disponibles[i].listarPelicula());
                 encontrada = true;
             }
         }
@@ -87,10 +93,9 @@ public class ActividadExtra2 {
     }
 
     public static void imprimirArrayAlquiladas(ServicioAlquiler[] alquiladas) {
-
         boolean encontrada = false;
         for (ServicioAlquiler alquilada : alquiladas) {
-            if (alquilada != null) {       //Para evitar error al querer manipular un elemento en null.     
+            if (alquilada != null) { // Para evitar error al querer manipular un elemento en null.
                 System.out.println(alquilada.listarPeliculaAlquilada());
                 System.out.print("\n");
                 encontrada = true;
@@ -108,66 +113,71 @@ public class ActividadExtra2 {
             System.out.println("Opción inválida, por favor elija 'T' o 'G'");
             opcion = scan.nextLine();
         }
+        boolean encontrada = false;
         if (opcion.equalsIgnoreCase("T")) {
             System.out.println("Ingrese el título de la película que desea buscar");
-
             String titulo = scan.nextLine();
-            boolean encontrada = false;
 
-            for (ServicioPelicula pelicula : disponibles) {
-                if (pelicula == null) {
-                    continue;
-                }//Para evitar error al querer manipular un elemento en null.
-                if (pelicula.buscarPeliculaPorTitulo(titulo)) {
-                    System.out.println("La película " + titulo + " se encuentra disponible:");
-                    System.out.println(pelicula.getPelicula());
-                    encontrada = true;
-                    break;
-                }
-            }
-
+            encontrada = buscarPorTitulo(titulo, disponibles);
             if (!encontrada) {
                 System.out.println("La película " + titulo + " no se encuentra disponible.");
             }
         } else {
             System.out.println("Ingrese el género de la película que desea buscar");
-
             String genero = scan.nextLine();
-            boolean encontrada = false;
-
-            for (ServicioPelicula disponible : disponibles) {
-                if (disponible == null) {
-                    continue;
-                }//Para evitar error al querer manipular un elemento en null.
-                if (disponible.buscarPeliculaPorGenero(genero)) {
-                    if (!encontrada) {
-                        System.out.println("Las siguientes películas del género " + genero + " se encuentran disponibles:");
-                        encontrada = true;
-                    }
-                    System.out.println(disponible.getPelicula());
-                }
-            }
-
+            encontrada = buscarPorGenero(genero, disponibles);
             if (!encontrada) {
                 System.out.println("No se encontraron películas del género " + genero + " .");
             }
         }
     }
 
+    public static boolean buscarPorTitulo(String titulo, ServicioPelicula[] disponibles) {
+        for (ServicioPelicula pelicula : disponibles) {
+            if (pelicula == null) {
+                continue;
+            } // Para evitar error al querer manipular un elemento en null.
+            if (pelicula.buscarPeliculaPorTitulo(titulo)) {
+                System.out.println("La película " + titulo + " se encuentra disponible:");
+                System.out.println(pelicula.getPelicula());
+                return true;
+            }
+        }
+        return false;
+    }
+
+    public static boolean buscarPorGenero(String genero, ServicioPelicula[] disponibles) {
+        boolean encontrada = false;
+        for (ServicioPelicula disponible : disponibles) {
+            if (disponible == null) {
+                continue;
+            } // Para evitar error al querer manipular un elemento en null.
+            if (disponible.buscarPeliculaPorGenero(genero)) {
+                if (!encontrada) {
+                    System.out.println("Las siguientes películas del género " + genero + " se encuentran disponibles:");
+                    encontrada = true;
+                }
+                System.out.println("\n" + disponible.getPelicula());
+            }
+        }
+        return encontrada;
+    }
+
     public static void buscarAlquiler(ServicioAlquiler[] alquiladas) {
         System.out.println("Por favor ingrese la fecha del alquiler que desea buscar");
 
         String date = scan.nextLine();
-        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu"); 
-        //Genero la posibilidad de leer el formato de la fecha en String y convertirlo correctamente al formato de LocalDate.
-        //Tuve que usar 'uuuu' en lugar de 'YYYY' porque sino se rompía.
-        LocalDate fecha = LocalDate.parse(date,formatter); //Transformo el String date a LocalDate.
+        DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
+        // Genero la posibilidad de leer el formato de la fecha en String y convertirlo
+        // correctamente al formato de LocalDate.
+        // Tuve que usar 'uuuu' en lugar de 'YYYY' porque sino se rompía.
+        LocalDate fecha = LocalDate.parse(date, formatter); // Transformo el String date a LocalDate.
         boolean encontrado = false;
 
-        for (ServicioAlquiler alquiler: alquiladas) {
+        for (ServicioAlquiler alquiler : alquiladas) {
             if (alquiler == null) {
                 continue;
-            } //Para evitar error al querer manipular un elemento en null.
+            } // Para evitar error al querer manipular un elemento en null.
             if (alquiler.buscarAlquilerPorFecha(fecha)) {
                 if (!encontrado) {
                     System.out.println("Se encontraron los siguientes alquileres en la fecha ingresada:");
@@ -175,7 +185,6 @@ public class ActividadExtra2 {
                 }
                 System.out.println(alquiler.listarPeliculaAlquilada());
             }
-
         }
         if (!encontrado) {
             System.out.println("No se encontraron alquileres activos en la fecha ingresada.");
