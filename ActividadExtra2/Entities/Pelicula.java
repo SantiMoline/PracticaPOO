@@ -1,7 +1,5 @@
 package ActividadExtra2.Entities;
 
-import java.util.Date;
-
 public class Pelicula {
 
     private String titulo;
@@ -53,11 +51,10 @@ public class Pelicula {
 
     @Override
     public String toString() {
-        return "Pelicula{" +
-                "titulo='" + titulo + '\'' +
-                ", genero='" + genero + '\'' +
-                ", anio=" + anio +
-                ", duracion=" + duracion +
-                '}';
+        return
+            "Título: " + titulo +
+            "\nGénero " + genero +
+            "\nAño: " + anio +
+            "\nDuración: " + duracion;
     }
 }
