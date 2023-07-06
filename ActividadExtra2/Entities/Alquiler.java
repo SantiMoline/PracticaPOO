@@ -53,11 +53,10 @@ public class Alquiler {
 
     @Override
     public String toString() {
-        return "Alquiler{" +
-                "pelicula=" + pelicula +
-                ", fechaInicio=" + fechaInicio +
-                ", fechaFin=" + fechaFin +
-                ", precio=" + precio +
-                '}';
+        return 
+            "\nPelícula: " + pelicula.getTitulo() +
+            "\nFecha de inicio: " + fechaInicio +
+            "\nFecha de devolución: " + fechaFin +
+            "\nPrecio: $" + precio;
     }
 }

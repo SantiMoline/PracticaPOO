@@ -11,10 +11,8 @@ public class ServicioAlquiler {
 
     private Alquiler alquiler = new Alquiler();
     Scanner scan = new Scanner(System.in);
+    
     public void crearAlquiler(Pelicula pelicula) {
-
-
-
         this.alquiler.setPelicula(pelicula);
         this.alquiler.setFechaInicio(LocalDate.now());
 
@@ -23,11 +21,6 @@ public class ServicioAlquiler {
         scan.nextLine(); //Throaway scan.
 
         this.alquiler.setFechaFin(this.alquiler.getFechaInicio().plusDays(dias));
-        // Calendar c = Calendar.getInstance();
-        // c.setTime(this.alquiler.getFechaInicio());
-        // c.add(Calendar.DATE, dias);
-        // this.alquiler.setFechaFin(c.getTime());
-
         if (dias <= 3) {
             this.alquiler.setPrecio(10);
         } else {
@@ -35,8 +28,13 @@ public class ServicioAlquiler {
         }
     }
 
+    //Getters
     public Pelicula listarPeliculaAlquilada() {
         return this.alquiler.getPelicula();
+    }
+
+    public Alquiler getAlquiler() {
+        return this.alquiler;
     }
 
     public boolean buscarAlquilerPorFecha(LocalDate fecha) {

@@ -164,7 +164,7 @@ public class ActividadExtra2 {
     }
 
     public static void buscarAlquiler(ServicioAlquiler[] alquiladas) {
-        System.out.println("Por favor ingrese la fecha del alquiler que desea buscar");
+        System.out.println("Por favor ingrese la fecha en la cual quiere conocer los alquileres activos: ");
 
         String date = scan.nextLine();
         DateTimeFormatter formatter = DateTimeFormatter.ofPattern("dd/MM/uuuu");
@@ -183,7 +183,7 @@ public class ActividadExtra2 {
                     System.out.println("Se encontraron los siguientes alquileres en la fecha ingresada:");
                     encontrado = true;
                 }
-                System.out.println(alquiler.listarPeliculaAlquilada());
+                System.out.println(alquiler.getAlquiler());
             }
         }
         if (!encontrado) {
