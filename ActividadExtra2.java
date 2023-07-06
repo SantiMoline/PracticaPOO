@@ -76,7 +76,7 @@ public class ActividadExtra2 {
     public static void imprimirArrayDisponibles(ServicioPelicula[] disponibles) {
         boolean encontrada = false;
         for (int i = 0; i < disponibles.length; i++) {
-            if (disponibles[i] != null) {
+            if (disponibles[i] != null) {       //Para evitar error al querer manipular un elemento en null.
                 System.out.println((i+1) + ": " + disponibles[i].listarPelicula());
                 encontrada = true;
             }
@@ -90,7 +90,7 @@ public class ActividadExtra2 {
 
         boolean encontrada = false;
         for (ServicioAlquiler alquilada : alquiladas) {
-            if (alquilada != null) {            
+            if (alquilada != null) {       //Para evitar error al querer manipular un elemento en null.     
                 System.out.println(alquilada.listarPeliculaAlquilada());
                 System.out.print("\n");
                 encontrada = true;
@@ -117,7 +117,7 @@ public class ActividadExtra2 {
             for (ServicioPelicula pelicula : disponibles) {
                 if (pelicula == null) {
                     continue;
-                }
+                }//Para evitar error al querer manipular un elemento en null.
                 if (pelicula.buscarPeliculaPorTitulo(titulo)) {
                     System.out.println("La película " + titulo + " se encuentra disponible:");
                     System.out.println(pelicula.getPelicula());
@@ -138,7 +138,7 @@ public class ActividadExtra2 {
             for (ServicioPelicula disponible : disponibles) {
                 if (disponible == null) {
                     continue;
-                }
+                }//Para evitar error al querer manipular un elemento en null.
                 if (disponible.buscarPeliculaPorGenero(genero)) {
                     if (!encontrada) {
                         System.out.println("Las siguientes películas del género " + genero + " se encuentran disponibles:");
@@ -165,7 +165,6 @@ public class ActividadExtra2 {
         boolean encontrado = false;
 
         for (ServicioAlquiler alquiler: alquiladas) {
-
             if (alquiler == null) {
                 continue;
             } //Para evitar error al querer manipular un elemento en null.
