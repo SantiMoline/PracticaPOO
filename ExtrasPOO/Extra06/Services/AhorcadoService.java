@@ -81,7 +81,7 @@ public class AhorcadoService {
         } else {
             System.out.println("You Rock! Winning was eeeeeeeasy.");
         }
-        System.out.println("La palabra a adivinar era: " + ahorcado.toString());
+        System.out.println("La palabra a adivinar era: " + ahorcado);
         System.out.println("Las letras utilizadas fueron: " + ahorcado.getUsedLetters());
     }
 
