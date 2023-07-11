@@ -6,6 +6,7 @@ public class Ahorcado {
     private int cantJugadasMax;
     private int cantEncontradas;
     private String[] palabra;
+    private String usedLetters;
 
     //Empty constructor.
     public Ahorcado() {
@@ -16,6 +17,7 @@ public class Ahorcado {
         this.cantJugadasMax = cantJugadasMax;
         this.cantEncontradas = 0;
         this.palabra = Arrays.copyOf(palabra, palabra.length); //To avoid reference trap.
+        this.usedLetters = "";
     }
 
     public Ahorcado(String palabra, int cantJugadasMax) {
@@ -26,6 +28,7 @@ public class Ahorcado {
         for (int i = 0; i < this.palabra.length; i++) {
             this.palabra[i] = palabra.substring(i, i+1);
         }
+        this.usedLetters = "";
     }
 
 
@@ -58,6 +61,14 @@ public class Ahorcado {
         for (int i = 0; i < this.palabra.length; i++) {
             this.palabra[i] = palabra.substring(i, i+1);
         }
+    }
+
+    public String getUsedLetters() {
+        return this.usedLetters;
+    }
+
+    public void setUsedLetters(String usedLetters) {
+        this.usedLetters = usedLetters;
     }
 
     //toSring

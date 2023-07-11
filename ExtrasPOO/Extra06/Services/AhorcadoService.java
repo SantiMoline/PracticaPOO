@@ -25,16 +25,6 @@ public class AhorcadoService {
     }
 
     public boolean buscar(String letter) {
-        // for (int i = 0; i < longitud(); i++) {
-        //     if (letter.equalsIgnoreCase(ahorcado.getPalabra()[i])) {
-        //         System.out.println("La letra '" + letter + "' se encuentra en la palabra a adivinar!!! =)");
-        //         return true;
-        //     }
-        // }
-        // System.out.println("La letra '" + letter + "' no se encuentra en la palabra. =(");
-        // return false;
-
-        //De la siguiente forma no me toma algunas letras, no entiendo porqué.
         if (Arrays.toString(ahorcado.getPalabra()).contains(letter)) {
             System.out.println("La letra '" + letter + "' se encuentra en la palabra a adivinar!!! =)");
             return true;
@@ -78,9 +68,11 @@ public class AhorcadoService {
         crearJuego();
         while (ahorcado.getCantJugadasMax() > 0 && letrasFaltantes() > 0 ){
             System.out.print("Ingrese una letra: ");
-            String opt = scan.nextLine().toLowerCase();
-            System.out.println("Longitud de la palabra: " + longitud());
-            encontradas(opt);
+            String letter = readLetter();
+            
+            ahorcado.setUsedLetters(ahorcado.getUsedLetters() + " - " + letter);
+            System.out.println("\nLongitud de la palabra: " + longitud());
+            encontradas(letter);
             intentos();
             System.out.println("--------------------------------------------------");
         }
@@ -90,6 +82,16 @@ public class AhorcadoService {
             System.out.println("You Rock! Winning was eeeeeeeasy.");
         }
         System.out.println("La palabra a adivinar era: " + ahorcado.toString());
+        System.out.println("Las letras utilizadas fueron: " + ahorcado.getUsedLetters());
+    }
+
+    private String readLetter() {
+        String letter = scan.nextLine().toLowerCase();
+        while (ahorcado.getUsedLetters().contains(letter)) {
+            System.out.print("La letra ya fue utilizada. Ingrese una nueva letra: ");
+            letter = scan.nextLine().toLowerCase();
+        }
+        return letter;
     }
 
 }
