@@ -9,6 +9,12 @@ public class RutinaService {
     ArrayList<Rutina> rutinas = new ArrayList<>();
     Scanner scan = new Scanner(System.in);
 
+    /**
+     * Fuction name: crearRutina
+     * @return  (Rutina)
+     * 
+     * Description: creates an instance of Rutina reading every field from user input.
+     */
     public Rutina crearRutina() {
         System.out.print("Ingrese el nombre del cliente a generar: ");
         String name = scan.nextLine();
@@ -26,6 +32,7 @@ public class RutinaService {
     /**
      * Function name: registrarRutina.
      * @param rutina    (Rutina)
+     * 
      * Description: Recieves an instance of Rutina and add to the ArrayList.
      */
     public void registrarRutina(Rutina rutina) {
@@ -51,34 +58,57 @@ public class RutinaService {
      * @param nivelDificultad   (String)
      * @param descripcion       (String)
      * @return                  (boolean)
+     * 
      * Description: search for the rutine with the chosed ID and updates its information with the new one.
      * Return true if the task is completed or false if the ID is non existent. 
      */
     public boolean actualizarRutina(int id, String name, int duracion, String nivelDificultad, String descripcion) {
-        for (int i = 0; i < rutinas.size(); i++) {
-            if (rutinas.get(i).getId() == id) {
-                rutinas.get(i).setNombre(name);
-                rutinas.get(i).setDuracion(duracion);
-                rutinas.get(i).setNivelDificultad(nivelDificultad);
-                rutinas.get(i).setDescripcion(descripcion);
-                return true;
-            }
-        }
+        int index = buscarRutina(id);
+        if (index >= 0 ) {
+            rutinas.get(index).setNombre(name);
+            rutinas.get(index).setDuracion(duracion);
+            rutinas.get(index).setNivelDificultad(nivelDificultad);
+            rutinas.get(index).setDescripcion(descripcion);
+            return true;
+        } else {
         System.out.println("No se ha encontrado una rutina con la ID indicada. Error al completar la solicitud.");
         return false;
+        }
     }
 
+    /**
+     * Function name: eliminarRutina.
+     * @param id    (int)
+     * @return      (boolean)
+     * 
+     * Description: Search for the rutine with the chosed ID and deletes it.
+     * Return true if the rutine was found and deleted. False if there is no rutine with the provided ID.
+     */
     public boolean eliminarRutina(int id) {
-        for (int i = 0; i < rutinas.size(); i++) {
-            if (rutinas.get(i).getId() == id) {
-                rutinas.remove(i);
-                return true;
-            }
+        int index = buscarRutina(id);
+        if (index >= 0) {
+            rutinas.remove(index);
+            return true;
+        } else {
+            System.out.println("No existe una rutina con el ID indicado. Error al procesar la solicitud.");
+            return false;
         }
-        System.out.println("No existe una rutina con el ID indicado. Error al procesar la solicitud.");
-        return false;
     }
-    
+
+    /**
+     * Function name: buscarRutina
+     * @param id    (int)
+     * @return      (int)
+     * 
+     * Description: Returns the index of the routine with the chosed ID. Returns -1 if the ID does not exist in the arrayList.
+     */
+    private int buscarRutina(int id) { //Método private ya que sólo se va a utilizar dentro de la clase.
+        for (int i = 0; i < rutinas.size(); i++) {
+            if(rutinas.get(i).getId() == id)
+                return i;
+        }
+        return -1;
+    }
 }
 /*crearRutina(Rutina rutina): recibe un objeto de tipo Rutina y lo agrega al sistema.
 obtenerRutinas(): devuelve una lista con todas las rutinas registradas en el sistema.

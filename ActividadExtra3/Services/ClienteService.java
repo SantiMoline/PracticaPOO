@@ -63,18 +63,18 @@ public class ClienteService {
      * Return true if the task is completed or false if the ID is non existent. 
      */
     public boolean actualizarCliente(int id, String name, int edad, double altura, double peso, String objetivo) {
-        for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getId() == id) {
-                clientes.get(i).setNombre(name);
-                clientes.get(i).setEdad(edad);
-                clientes.get(i).setAltura(altura);
-                clientes.get(i).setPeso(peso);
-                clientes.get(i).setObjetivo(objetivo);
-                return true;
-            }
+        int index = buscarCliente(id);
+        if (index >= 0) {
+            clientes.get(index).setNombre(name);
+            clientes.get(index).setEdad(edad);
+            clientes.get(index).setAltura(altura);
+            clientes.get(index).setPeso(peso);
+            clientes.get(index).setObjetivo(objetivo);
+            return true;
+        } else {
+            System.out.println("El ID ingresado no corresponde con ningún cliente de la base de datos.\nNo se ha podido completar la actualización.");
+            return false;
         }
-        System.out.println("El ID ingresado no corresponde con ningún cliente de la base de datos.\nNo se ha podido completar la actualización.");
-        return false;
     }
 
     /**
@@ -85,14 +85,29 @@ public class ClienteService {
      * Deletes it and return true. If it couldn't find a cliente with the chosen ID, returns false.
      */
     public boolean eliminarCliente(int id) {
-        for (int i = 0; i < clientes.size(); i++) {
-            if (clientes.get(i).getId() == id) {
-                clientes.remove(i);
-                return true;
-            }
+        int index = buscarCliente(id);
+        if (index >=0) {
+            clientes.remove(index);
+            return true;
+        } else {
+            System.out.println("No existe un cliente con el ID indicado. No se ha podido completar la solicitud.");
+            return false;
         }
-        System.out.println("No existe un cliente con el ID indicado. No se ha podido completar la solicitud.");
-        return false;
+    }
+
+    /**
+     * Function name: buscarCliente
+     * @param id    (int)
+     * @return      (int)
+     * 
+     * Description: search the index of the client with the chosed ID. If it does not find it, returns -1.
+     */
+    private int buscarCliente(int id) {
+        for (int i = 0; i < clientes.size(); i++) {
+            if (clientes.get(i).getId() == id) 
+                return i;
+        }
+        return -1;
     }
 }
 

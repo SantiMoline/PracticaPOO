@@ -75,8 +75,4 @@ public class Rutina {
             "\nNivel de dificultad: " + getNivelDificultad() +
             "\nDescripción: " + getDescripcion();
     }
-
-    
-
-
 }
