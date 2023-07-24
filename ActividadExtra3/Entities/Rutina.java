@@ -1,7 +1,5 @@
 package ActividadExtra3.Entities;
 
-import java.util.UUID;
-
 public class Rutina {
     //actualizarRutina(int id, String nombre, int duracion, String nivelDificultad, String descripcion):
     private int id;
@@ -16,7 +14,7 @@ public class Rutina {
 
     //Constructor.
     public Rutina(String nombre, int duracion, String nivelDificultad, String descripcion) {
-        this.id = Integer.parseInt(UUID.randomUUID().toString());
+        this.id = (int) ((Math.random() + 1)  * 15000);
         this.nombre = nombre;
         this.duracion = duracion;
         this.nivelDificultad = nivelDificultad;

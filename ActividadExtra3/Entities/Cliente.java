@@ -1,7 +1,5 @@
 package ActividadExtra3.Entities;
 
-import java.util.UUID;
-
 public class Cliente {
     /*int id, String nombre, int edad, double altura, double peso, String objetivo */
     private int id;
@@ -17,7 +15,7 @@ public class Cliente {
 
     //Constructor
     public Cliente(String nombre, int edad, double altura, double peso, String objetivo) {
-        this.id = Integer.valueOf(UUID.randomUUID().toString());
+        this.id = (int) ((Math.random() + 1)  * 15000);
         this.nombre = nombre;
         this.edad = edad;
         this.altura = altura;
@@ -76,16 +74,15 @@ public class Cliente {
     }
     
     //toString
-
     @Override
     public String toString() {
         return
-            "Client ID: '" + getId() +
+            "Client ID: " + getId() +
             "\nNombre: " + getNombre() +
             "\nEdad: " + getEdad() +
             "\nAltura: " + getAltura() +
             "\nPeso: " + getPeso() +
-            "\nObjetivo:" + getObjetivo();
+            "\nObjetivo: " + getObjetivo();
     }
 
 }

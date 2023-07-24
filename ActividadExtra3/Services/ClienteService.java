@@ -20,11 +20,14 @@ public class ClienteService {
         String name = scan.nextLine();
         System.out.print("\nIngrese la edad: ");
         int age = scan.nextInt();
+        //scan.nextLine(); //Throwaway Scan.
         System.out.print("\nIngrese la altura: ");
         double height = scan.nextDouble();
+        //scan.nextLine(); //Throwaway Scan.
         System.out.print("\nIndique el peso de la persona: ");
         double weight = scan.nextDouble();
         scan.nextLine(); //Throwaway scan.
+        System.out.print("\nIndique el objetivo del entrenamiento: ");
         String objetive = scan.nextLine();
 
         return new Cliente(name, age, height, weight, objetive);
@@ -43,9 +46,14 @@ public class ClienteService {
      * Description: Print a list of registered clients.
      */
     public void obtenerClientes() {
-        for (Cliente cliente : clientes) {
-            System.out.println("---------------------------------------");
-            System.out.println(cliente);
+        if(clientes.isEmpty()) {
+            System.out.println("No hay clientes registrados.");
+        } else {
+            System.out.println("Los clientes registrados son los siguientes: ");
+            for (Cliente cliente : clientes) {
+                System.out.println("---------------------------------------");
+                System.out.println(cliente);
+            }
         }
     }
 

@@ -16,7 +16,7 @@ public class RutinaService {
      * Description: creates an instance of Rutina reading every field from user input.
      */
     public Rutina crearRutina() {
-        System.out.print("Ingrese el nombre del cliente a generar: ");
+        System.out.print("Ingrese el nombre de la rutina a generar: ");
         String name = scan.nextLine();
         System.out.print("\nIngrese la duración: ");
         int duration = scan.nextInt();
@@ -44,10 +44,16 @@ public class RutinaService {
      * Description: Prints a list of every registered rutine.
      */
     public void obtenerRutinas() {
-        for (Rutina rutina : rutinas) {
-            System.out.println("---------------------------------------");
-            System.out.println(rutina);
+        if (rutinas.isEmpty()) {
+            System.out.println("No hay rutinas registradas.");
+        } else {
+            for (Rutina rutina : rutinas) {
+                System.out.println("Las rutinas registradas son: ");
+                System.out.println("---------------------------------------");
+                System.out.println(rutina);
+            }
         }
+
     }
 
     /**
